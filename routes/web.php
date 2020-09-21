@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('phone.verified');
+
+// phone
+Route::group(['prefix' => 'verify/phone', 'middleware' => ['auth']], function () {
+    Route::get('/', 'Auth\PhoneController@verify')->name('verify.phone');
+    Route::post('/update', 'Auth\PhoneController@update')->name('verify.phone.update');
+});

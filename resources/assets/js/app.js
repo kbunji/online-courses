@@ -20,3 +20,5 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+window.CountryCodesList = require('country-codes-list');

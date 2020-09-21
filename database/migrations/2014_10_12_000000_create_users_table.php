@@ -7,7 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     const LANGUAGE_RUSSIAN = 1;
-    const STATUS_ACTIVE = 1;
+    const STATUS_CREATED = 1;
+    const STATUS_VERIFIED = 3;
 
     /**
      * Run the migrations.
@@ -18,14 +19,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id');
             $table->string('login')->unique()->nullable();;
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique();
-            $table->tinyInteger('status')->default(self::STATUS_ACTIVE);
-            $table->string('first_name)');
-            $table->string('middle_name');
-            $table->string('last_name');
+            $table->string('phone_code')->nullable();
+            $table->tinyInteger('status')->default(self::STATUS_CREATED);
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('country')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();

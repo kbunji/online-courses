@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    //
+    protected $guarded = [];
+
+    public function users() {
+        return $this->belongsToMany('App\Models\User', 'role_user_details');
+    }
 }
