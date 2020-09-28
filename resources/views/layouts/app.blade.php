@@ -14,68 +14,69 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+<div id="app">
+    <header>
+        <div class="container-xl">
+            <div class="row header__row">
+                <div class="col-md-3">
+                    <img src="/media/logo.jpeg" alt="" width="104" height="54">
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <div class="col-md-9">
+                    <div class="nav right">
+                        <form class="search" action="{{ route('course.search') }}">
+                            <input type="text" class="search__text" name="search_text" placeholder="Введите текст..."
+                                   required>
+                            <button type="submit" class="search__btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                        <div class="nav--auth">
+                            @if (Auth::guest())
+                                <a href="{{ route('login') }}"><i class="far fa-user-circle"></i> Войти</a>
+                            @else
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
                                 </ul>
-                            </li>
-                        @endif
-                    </ul>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
 
-        @yield('content')
-    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav menu">
+                        <a class="nav__item" href=""><span>Категории</span></a>
+                        <a class="nav__item" href=""><span>Олимпиады</span></a>
+                        <a class="nav__item" href=""><span>Конференции</span></a>
+                        <a class="nav__item" href=""><span>Лицензия</span></a>
+                        <a class="nav__item" href=""><span>Контакты</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @yield('content')
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @yield('scripts')
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

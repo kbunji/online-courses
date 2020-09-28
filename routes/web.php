@@ -24,3 +24,5 @@ Route::group(['prefix' => 'verify/phone', 'middleware' => ['auth']], function ()
     Route::get('/', 'Auth\PhoneController@verify')->name('verify.phone');
     Route::post('/update', 'Auth\PhoneController@update')->name('verify.phone.update');
 });
+
+Route::post('/asd', 'Auth\PhoneController@update')->name('course.search');

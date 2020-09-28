@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
     <div class="container">
@@ -6,12 +6,20 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Register</div>
-
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
                             <input type="hidden" name="role" value="3">
+                            @if ($errors->has('role'))
+                                <div class="form-group has-error">
+                                    <div class="col-md-10">
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                 <label for="first_name" class="col-md-4 control-label">First Name</label>
@@ -65,7 +73,8 @@
                                 <label for="password" class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                           required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -76,7 +85,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-4 control-label">Confirm
+                                    Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"

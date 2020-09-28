@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -57,6 +58,10 @@ class RegisterController extends Controller
             'email' => 'string|email|max:255|unique:users',
             'phone' => 'required|string|min:10|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role' => [
+                'numeric',
+                Rule::notIn('1')
+            ]
         ]);
     }
 
@@ -90,8 +95,8 @@ class RegisterController extends Controller
     /**
      * The user has been registered.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $user
      * @return mixed
      */
     protected function registered(Request $request, $user)

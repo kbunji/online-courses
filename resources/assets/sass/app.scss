@@ -1,9 +1,188 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/app_fonts/Lora.woff2') format('woff2'),
+  url('/fonts/app_fonts/Lora.woff') format('woff'),
+  url('/fonts/app_fonts/Lora.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('/fonts/app_fonts/Georgia.woff2') format('woff2'),
+  url('/fonts/app_fonts/Georgia.woff') format('woff'),
+  url('/fonts/app_fonts/Georgia.ttf') format('truetype');
+}
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 // Variables
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+body {
+  a {
+    color: #000000;
+
+    &:link {
+      text-decoration: none;
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:active {
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #000000
+    }
+  }
+
+  font-family: 'Georgia', serif;
+
+  h1 {
+    font-family: 'Lora', serif;
+  }
+}
+
+.header__row {
+  margin-bottom: 1rem;
+}
+
+header {
+  padding: 1rem 0 0.8rem 0;
+
+  .nav {
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav.right {
+    justify-content: flex-end;
+  }
+
+  .nav--auth {
+    margin-left: 2rem;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 0.66rem;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .nav.menu {
+    .nav__item {
+      color: #161616;
+      width: 20%;
+      text-align: center;
+      border: 1px solid #E1B940;
+      padding: 8px 0;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+form.search {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .search__btn, .search__text {
+    background: #E5E5E5;
+    border: none;
+    font-size: 0.7rem;
+  }
+
+  .search__btn {
+    border-radius: 0 29px 29px 0;
+    padding: 7px 20px 7px 0;
+    outline: none;
+  }
+
+  .search__text {
+    border-radius: 29px 0 0 29px;
+    padding: 7px 0 7px 20px;
+    min-width: 14rem;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+}
+
+div.promo {
+  height: 70vh;
+  width: 100%;
+  background: url("/media/welcome bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+}
+
+.promo__content {
+  background: linear-gradient(104.28deg, #E1B940 20.51%, #DEA909 64.94%);
+  box-shadow: inset 9px 9px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 21px;
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+
+  h1.promo__title {
+    color: #FFFF;
+    position: relative;
+    text-shadow: 0px -1px #C1940A, -1px 0px #C1940A, 0px 1px #C1940A, 1px 0px #C1940A;
+    font-size: 3.5em;
+    display: flex;
+    flex-direction: column;
+
+    .promo__title-warning {
+      position: relative;
+      color: #000;
+      font-size: 0.6em;
+
+      background: #FFFFFF;
+      box-shadow: inset 6px 7px 4px rgba(0, 0, 0, 0.25);
+      clip-path: none;
+      text-align: end;
+      padding-right: 10px;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .promo__title-warning.abs {
+      position: absolute;
+      top: 4.8rem;
+      right: 0;
+      padding-left: 70px;
+
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%);
+    }
+  }
+
+  p.promo__text {
+    color: #020202;
+    width: 48%;
+    margin-top: 0.8rem;
+    font-size: 1.5em;
+  }
+}
